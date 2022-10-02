@@ -1,0 +1,72 @@
+﻿@model Student
+
+<h2 class="text-center">Delete Student Record</h2>
+<form asp-controller="Student" asp-action="Delete" method="post" role="form">
+    <input asp-for="Id" hidden />
+    <input asp-for="RegistrationDate" hidden />
+    <div class="row offset-2">
+        <div class="row">
+            <div class="col-md-5 form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" disabled class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-md-5 form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" disabled class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 form-group">
+                <label asp-for="Email"></label>
+                <div class="input-group">
+                    <span class="input-group-text">@@</span>
+                    <input asp-for="Email" disabled type="email" class="form-control" placeholder="example@mail.com" />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-md-5 form-group ">
+                <label asp-for="PhoneNumber"></label>
+                <div class="input-group">
+                    <span class="input-group-text">#</span>
+                    <input asp-for="PhoneNumber" disabled type="number" class="form-control" placeholder="12345678" />
+                </div>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 form-group">
+                <label asp-for="Gender"></label>
+                <select asp-for="Gender" disabled class="form-control">
+                    <option value="">Select from dropdown</option>
+                    <option value="Male">M</option>
+                    <option value="Female">F</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-group mt-2 offset-1">
+            <div class="col-md-4 d-inline-flex">
+                <input type="submit" class="btn btn-danger m w-75" value="Delete Record" />
+
+            </div>
+            <div class="col-md-4 d-inline-flex">
+
+                <button asp-controller="Student" asp-action="Index" class="btn btn-secondary w-75">Back</button>
+            </div>
+
+
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+
