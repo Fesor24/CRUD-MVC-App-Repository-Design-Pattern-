@@ -1,7 +1,7 @@
 ﻿@model Student
 
 <h2 class="text-center">Add Student Record</h2>
-<form asp-controller="Student" asp-action="Create" method="post" role="form">
+<form asp-controller="Student" asp-action="Create" method="post" role="form" autocomplete="off">
     <div class="row offset-2">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="row">
@@ -47,20 +47,29 @@
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
         </div>
-        <div class="row form-group mt-2 offset-1">
-            <div class="col-md-4 d-inline-flex">
-                <input type="submit" class="btn btn-success m w-75" value="Save Record" />
-              
-            </div>
-            <div class="col-md-4 d-inline-flex">
-               
-                <button asp-controller="Student" asp-action="Index" class="btn btn-secondary w-75">Back</button>
+
+        <div class="row form-group mt-2 offset-2">
+            <div>
+                <input type="submit" class="btn btn-success m w-50" value="Save Record" />
+
             </div>
             
-            
+
+
         </div>
+        
     </div>
 </form>
+
+<div class="row">
+    <div class="col-md-4 offset-2">
+
+    <a asp-controller="Student" asp-action="Index">Back to List</a>
+</div>
+</div>
+
+
+
 
 @section Scripts{
     @{

@@ -4,10 +4,10 @@ namespace MVC_CRUD_App.Data.Interface
 {
     public interface IStudentRepository
     {
-        IEnumerable<Student> GetAllStudents { get; }
+        Task<IEnumerable<Student>> GetAllStudents();
 
-        void CreateStudent(Student student);
-        void UpdateStudent(Student student);
-        void DeleteStudent(Student student);
+        Task CreateStudent(Student student);
+        Task UpdateStudent(Student student);
+        Task DeleteStudent(Student student);
     }
 }

@@ -15,9 +15,9 @@ namespace MVC_CRUD_App.Controllers
             _context = context;
             _studentRepository = studentRepository;
         }
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var allStudents = _studentRepository.GetAllStudents;
+            var allStudents = await _studentRepository.GetAllStudents();
             return View(allStudents);
         }
 
@@ -28,12 +28,12 @@ namespace MVC_CRUD_App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Student model)
+        public async Task<IActionResult> Create(Student model)
         {
             if (ModelState.IsValid)
             {
                 model.RegistrationDate = DateTime.Now;
-                _studentRepository.CreateStudent(model);
+                await _studentRepository.CreateStudent(model);
             }
             return RedirectToAction(nameof(Index));
         }
@@ -57,11 +57,11 @@ namespace MVC_CRUD_App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Student model)
+        public async Task<IActionResult> Update(Student model)
         {
             if (ModelState.IsValid)
             {
-                _studentRepository.UpdateStudent(model);
+                await _studentRepository.UpdateStudent(model);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -87,7 +87,7 @@ namespace MVC_CRUD_App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if(id == 0)
             {
@@ -100,7 +100,7 @@ namespace MVC_CRUD_App.Controllers
                 return NotFound();
             }
 
-            _studentRepository.DeleteStudent(result);
+            await _studentRepository.DeleteStudent(result);
             return RedirectToAction(nameof(Index));
         }
     }

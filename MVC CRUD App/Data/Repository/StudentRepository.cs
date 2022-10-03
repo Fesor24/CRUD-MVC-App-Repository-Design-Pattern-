@@ -13,30 +13,27 @@ namespace MVC_CRUD_App.Data.Repository
             _context = context;
         }
 
-        public void CreateStudent(Student student)
+        public async Task CreateStudent(Student student)
         {
             _context.Students.Add(student);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void DeleteStudent(Student student)
+        public async Task DeleteStudent(Student student)
         {
             _context.Remove(student);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<Student> GetAllStudents
+        public async Task<IEnumerable<Student>> GetAllStudents()
         {
-            get
-            {
-                return _context.Students.ToList();
-            }
+            return await _context.Students.ToListAsync();
         }
 
-        public void UpdateStudent(Student student)
+        public async Task UpdateStudent(Student student)
         {
             _context.Students.Update(student);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }
